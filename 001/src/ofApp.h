@@ -15,6 +15,12 @@ public:
 	void UpdateBall();
 };
 
+class FractalBranch {
+public:
+	glm::vec2 startpoint;
+	glm::vec2 endpoint;
+};
+
 class ofApp : public ofBaseApp{
 
 	public:
@@ -34,7 +40,10 @@ class ofApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
 		
-
+		vector<FractalBranch> AllFractalBranches;
 		vector<Ball> AllBalls;
+
+		glm::vec2 startpoint;
+		glm::vec2 endpoint;
 };
 

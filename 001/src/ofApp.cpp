@@ -2,6 +2,17 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
+    startpoint = glm::vec2(ofGetWidth() / 2, 0);
+    endpoint = startpoint + glm::vec2(0, 100);
+
+    for (int i = 0; i < 10; i++)
+    {
+        AllFractalBranches.push_back(FractalBranch());
+        AllFractalBranches[i].startpoint = startpoint;
+        AllFractalBranches[i].endpoint = endpoint;
+        startpoint = endpoint;
+        endpoint = endpoint + glm::normalize(glm::vec2(100 * cos(4 * i + 1), 100 * sin(4 * i + 1))) * 100/(i+1);
+    }
 }
 
 //--------------------------------------------------------------
@@ -15,12 +26,21 @@ void ofApp::draw(){
     {
         AllBalls[i].UpdateBall();
     }
+
+
+
+    for (int i = 0; i < AllFractalBranches.size(); i++)
+    {
+        ofDrawLine(AllFractalBranches[i].startpoint, AllFractalBranches[i].endpoint);
+
+    }
+
 }
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
     if (key == ' ') {
-        AllBalls.push_back(Ball()); // do something else
+        //AllBalls.push_back(Ball()); // do something else
     }
 }
 
