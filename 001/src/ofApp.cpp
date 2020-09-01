@@ -5,13 +5,23 @@ void ofApp::setup(){
     startpoint = glm::vec2(ofGetWidth() / 2, 0);
     endpoint = startpoint + glm::vec2(0, 100);
 
-    for (int i = 0; i < 10; i++)
+    for (int i = 0; i < 3; i++)
     {
         AllFractalBranches.push_back(FractalBranch());
         AllFractalBranches[i].startpoint = startpoint;
         AllFractalBranches[i].endpoint = endpoint;
         startpoint = endpoint;
-        endpoint = endpoint + glm::normalize(glm::vec2(100 * cos(4 * i + 1), 100 * sin(4 * i + 1))) * 100/(i+1);
+
+        glm::vec3 v3RotAxis(0.0f, 0.0f, 1.0f); // Rotate about z+
+        float angleRad = 3.14/4; // Rotate of a quarter of a turn
+        
+        glm::quat quatRot = glm::angleAxis(angleRad, v3RotAxis);
+        glm::mat4x4 matRot = glm::mat4_cast(quatRot);
+        glm::vec4 v4In(startpoint.x, startpoint.y, 0.0f, 1.0f);
+        glm::vec4 out = matRot * v4In;
+
+        endpoint = glm::vec2(out.x, out.y);
+
     }
 }
 
