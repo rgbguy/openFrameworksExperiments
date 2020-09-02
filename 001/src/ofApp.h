@@ -1,6 +1,7 @@
 #pragma once
 
 #include "ofMain.h"
+#include <glm/gtx/matrix_decompose.hpp>
 
 class Ball {
 public:
@@ -19,6 +20,7 @@ class FractalBranch {
 public:
 	glm::vec2 startpoint;
 	glm::vec2 endpoint;
+	void FindNextPoint(glm::vec2 startpoint, glm::vec2 endpoint, float angleInDegrees, int maxBranches);
 };
 
 class ofApp : public ofBaseApp{
