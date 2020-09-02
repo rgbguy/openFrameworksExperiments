@@ -20,5 +20,11 @@ class ofApp : public ofBaseApp{
 		void windowResized(int w, int h);
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
+
+		void DrawRipples(float radiusOfRipple);
+		glm::vec2 mousePos;
+		int mouseButton;
+		float radius = 0;
+		float time;
 		
 };
