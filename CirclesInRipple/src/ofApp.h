@@ -27,4 +27,9 @@ class ofApp : public ofBaseApp{
 		float radius = 0;
 		float time;
 		
+		ofSoundPlayer beat;
+		int bands;
+		float* fftSmooth;
+
+
 };
