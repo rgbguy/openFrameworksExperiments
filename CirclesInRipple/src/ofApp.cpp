@@ -61,6 +61,7 @@ void ofApp::draw(){
 	}
 #endif
 
+#if 1
 	ofSetRectMode(OF_RECTMODE_CENTER);
 	ofTranslate(ofGetWidth() / 2, ofGetHeight() / 2);
 	for (int i = 0; i < bands; i++)
@@ -75,7 +76,7 @@ void ofApp::draw(){
 		}
 		cout << 1000*fftSmooth[i] << "\n";
 	}
-
+#endif
 }
 
 //--------------------------------------------------------------
